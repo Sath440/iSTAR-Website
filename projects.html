@@ -2,6 +2,13 @@
 layout: default
 title: Projects
 permalink: /projects/
+projects:
+  - title: "Autonomous Navigation"
+    description: "Developing robust navigation algorithms for autonomous robots."
+    status: "ongoing"
+    achievements:
+      - "Implemented real-time object tracking"
+      - "Achieved 95% navigation success rate"
 ---
 
 <!-- Projects Section - React mount point -->
@@ -9,125 +16,28 @@ permalink: /projects/
 
 <!-- React Component -->
 <script type="text/babel">
-    const ProjectsSection = () => {
-        const [activeFilter, setActiveFilter] = React.useState('all');
-
-        // Project data from Jekyll data files
-        const projects = [
-            {
-                id: 1,
-                status: 'ongoing',
-                title: 'Autonomous Navigation in Dynamic Environments',
-                description: 'Developing robust navigation algorithms for autonomous robots operating in dynamic and uncertain environments. This project focuses on real-time path planning and obstacle avoidance using advanced sensor fusion and machine learning techniques.',
-                achievements: [
-                    'Developed novel SLAM algorithms for dynamic environments',
-                    'Implemented real-time object tracking and prediction',
-                    'Achieved 95% navigation success rate in crowded settings'
-                ],
-            },
-            // More projects will be loaded from Jekyll data
-        ];
-
-        // Filter projects based on active filter
-        const filteredProjects = projects.filter(project => {
-            if (activeFilter === 'all') return true;
-            return project.status === activeFilter;
-        });
-
-        // Status badge styling
-        const getStatusStyle = (status) => {
-            return status === 'ongoing' 
-                ? 'bg-green-100 text-green-600' 
-                : 'bg-purple-100 text-purple-600';
-        };
-
+    function ProjectsSection() {
+        const projects = {{ page.projects | jsonify }};
+        
         return (
             <section className="container mx-auto py-16 px-6">
-                {/* Header */}
-                <div className="max-w-4xl mx-auto mb-12">
-                    <h2 className="text-3xl font-bold mb-6">Research Projects</h2>
-                    <p className="text-gray-700 text-lg">
-                        Explore our current and past research projects, spanning various areas of artificial intelligence, robotics, and autonomous systems.
-                    </p>
-                </div>
-
-                {/* Project Filters */}
-                <div className="max-w-4xl mx-auto mb-8 flex flex-wrap gap-4">
-                    <button 
-                        className={`px-4 py-2 rounded ${activeFilter === 'all' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
-                        onClick={() => setActiveFilter('all')}
-                    >
-                        All Projects
-                    </button>
-                    <button 
-                        className={`px-4 py-2 rounded ${activeFilter === 'ongoing' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
-                        onClick={() => setActiveFilter('ongoing')}
-                    >
-                        Ongoing
-                    </button>
-                    <button 
-                        className={`px-4 py-2 rounded ${activeFilter === 'completed' ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
-                        onClick={() => setActiveFilter('completed')}
-                    >
-                        Completed
-                    </button>
-                </div>
-                
-                {/* Projects Grid */}
-                <div className="max-w-4xl mx-auto space-y-8">
-                    {filteredProjects.map(project => (
-                        <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            <div className="p-6">
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusStyle(project.status)}`}>
-                                            {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
-                                        </span>
-                                        <h3 className="text-2xl font-semibold mt-3">{project.title}</h3>
-                                    </div>
-                                    <img 
-                                        src={project.imageUrl || "/api/placeholder/120/120"} 
-                                        alt={`${project.title} thumbnail`} 
-                                        className="rounded-lg"
-                                    />
-                                </div>
-                                <p className="text-gray-600 mt-4">
-                                    {project.description}
-                                </p>
-                                <div className="mt-4">
-                                    <h4 className="font-semibold text-gray-900">
-                                        {project.status === 'ongoing' ? 'Current Progress:' : 'Key Outcomes:'}
-                                    </h4>
-                                    <ul className="mt-2 space-y-2 text-gray-600">
-                                        {project.achievements.map((achievement, index) => (
-                                            <li key={index}>• {achievement}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="mt-6 flex items-center gap-4">
-                                    {project.projectUrl && (
-                                        <a href={project.projectUrl} className="text-blue-500 hover:text-blue-600 font-medium">
-                                            Project Details →
-                                        </a>
-                                    )}
-                                    {project.projectUrl && project.publicationsUrl && (
-                                        <span className="text-gray-400">|</span>
-                                    )}
-                                    {project.publicationsUrl && (
-                                        <a href={project.publicationsUrl} className="text-blue-500 hover:text-blue-600 font-medium">
-                                            Related Publications
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
+                <h2 className="text-3xl font-bold mb-6">Research Projects</h2>
+                <div className="space-y-8">
+                    {projects.map((project, index) => (
+                        <div key={index} className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-2xl font-semibold">{project.title}</h3>
+                            <p className="text-gray-700 mt-2">{project.description}</p>
+                            <ul className="mt-4 text-gray-600">
+                                {project.achievements.map((achievement, i) => (
+                                    <li key={i}>• {achievement}</li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
                 </div>
             </section>
         );
-    };
+    }
 
-    // Mount the React component
-    const root = ReactDOM.createRoot(document.getElementById('projects-root'));
-    root.render(<ProjectsSection />);
+    ReactDOM.createRoot(document.getElementById("projects-root")).render(<ProjectsSection />);
 </script>

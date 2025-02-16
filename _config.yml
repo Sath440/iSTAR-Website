@@ -19,6 +19,7 @@ include:
   - _layouts
   - _posts
   - assets
+  - admin
 
 exclude:
   - .sass-cache/

@@ -4,8 +4,8 @@ email: your-email@example.com
 description: >- 
   Intelligent Systems and Technology for Automation Research Laboratory - 
   Advancing the frontiers of AI, robotics, and autonomous systems.
-baseurl: "/iSTAR-Website"
-url: "https://sath440.github.io"
+baseurl: ""
+url: "https://jovial-cupcake-5a0a9b.netlify.app/"
 
 # Build settings
 theme: null

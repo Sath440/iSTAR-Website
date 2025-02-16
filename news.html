@@ -1,0 +1,46 @@
+---
+layout: default
+title: News
+permalink: /news/
+news_items:
+  - title: "Breakthrough in AI Research"
+    description: "Our lab recently made a groundbreaking discovery in AI-powered robotics."
+    link: "#"
+    date: "Jan 20, 2025"
+  - title: "Collaboration with Industry Leaders"
+    description: "We are excited to announce a partnership with leading tech firms for advanced research."
+    link: "#"
+    date: "Feb 1, 2025"
+---
+
+<!-- News Section - React mount point -->
+<div id="news-root"></div>
+
+<!-- React Component -->
+<script type="text/babel">
+    function NewsSection() {
+        const newsItems = {{ page.news_items | jsonify }};
+
+        return (
+            <section className="container mx-auto py-16 px-6">
+                <h2 className="text-3xl font-bold mb-6" data-aos="fade-right">Latest News</h2>
+                <div className="space-y-8">
+                    {newsItems.map((item, index) => (
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+                            <h3 className="text-2xl font-semibold">{item.title}</h3>
+                            <p className="text-gray-700 mt-2">
+                                {item.description}
+                                <a href={item.link} className="text-blue-500 hover:underline ml-2">
+                                    Read more
+                                </a>
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1">Published on: {item.date}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById("news-root")).render(<NewsSection />);
+</script>

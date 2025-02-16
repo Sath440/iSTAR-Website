@@ -1,0 +1,39 @@
+---
+layout: default
+title: Publications
+permalink: /publications/
+publications:
+  - title: "Deep Learning for Robotics"
+    authors: "Dr. John Doe, Dr. Jane Smith"
+    journal: "AI Research Journal"
+    year: "2024"
+    link: "#"
+---
+
+<!-- Publications Section - React mount point -->
+<div id="publications-root"></div>
+
+<!-- React Component -->
+<script type="text/babel">
+    function PublicationsSection() {
+        const publications = {{ page.publications | jsonify }};
+        
+        return (
+            <section className="container mx-auto py-16 px-6">
+                <h2 className="text-3xl font-bold mb-6">Publications</h2>
+                <div className="space-y-6">
+                    {publications.map((pub, index) => (
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                            <h3 className="text-xl font-semibold">{pub.title}</h3>
+                            <p className="text-gray-700">{pub.authors}</p>
+                            <p className="text-gray-500">{pub.journal}, {pub.year}</p>
+                            <a href={pub.link} className="text-blue-500 hover:underline">Read More</a>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById("publications-root")).render(<PublicationsSection />);
+</script>

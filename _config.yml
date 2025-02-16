@@ -1,0 +1,35 @@
+# Site settings
+title: iSTAR Laboratory
+email: your-email@example.com
+description: >- 
+  Intelligent Systems and Technology for Automation Research Laboratory - 
+  Advancing the frontiers of AI, robotics, and autonomous systems.
+baseurl: ""
+url: "http://127.0.0.1:4000"
+
+# Build settings
+theme: null
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Directory settings
+include:
+  - _includes
+  - _layouts
+  - _posts
+  - assets
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .gitignore
+
+# Enable Sass (if using Tailwind CSS)
+sass:
+  style: compressed

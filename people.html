@@ -1,0 +1,38 @@
+---
+layout: default
+title: People
+permalink: /people/
+people:
+  - name: "Dr. John Doe"
+    role: "Principal Investigator"
+    research_interests: "AI, Machine Learning, Robotics"
+    image_url: "/assets/images/john-doe.jpg"
+---
+
+<!-- People Section - React mount point -->
+<div id="people-root"></div>
+
+<!-- React Component -->
+<script type="text/babel">
+    function PeopleSection() {
+        const people = {{ page.people | jsonify }};
+        
+        return (
+            <section className="container mx-auto py-16 px-6">
+                <h2 className="text-3xl font-bold mb-6">Our Team</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {people.map((person, index) => (
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                            <img src={person.image_url} alt={person.name} className="w-32 h-32 object-cover rounded-full mx-auto" />
+                            <h3 className="text-xl font-semibold text-center mt-4">{person.name}</h3>
+                            <p className="text-gray-600 text-center">{person.role}</p>
+                            <p className="text-gray-700 text-center mt-2">{person.research_interests}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById("people-root")).render(<PeopleSection />);
+</script>

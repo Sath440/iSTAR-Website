@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: main  # Change to 'master' if needed
+
+publish_mode: editorial_workflow
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "index.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Heading", name: "hero_heading", widget: "string" }
+          - { label: "Hero Subtext", name: "hero_subtext", widget: "text" }
+          - { label: "Hero Button Text", name: "hero_button", widget: "string" }
+          - { label: "Hero Button Link", name: "hero_button_link", widget: "string" }
+
+      - label: "News Page"
+        name: "news"
+        file: "news.html"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "News Items"
+            name: "news_items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Link", name: "link", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime" }
+
+      - label: "People Page"
+        name: "people"
+        file: "people.html"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "People"
+            name: "people"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Research Interests", name: "research_interests", widget: "text" }
+              - { label: "Image URL", name: "image_url", widget: "string" }
+
+      - label: "Projects Page"
+        name: "projects"
+        file: "projects.html"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Status", name: "status", widget: "select", options: ["ongoing", "completed"] }
+              - label: "Achievements"
+                name: "achievements"
+                widget: "list"
+                field: { label: "Achievement", name: "achievement", widget: "string" }
+
+      - label: "Publications Page"
+        name: "publications"
+        file: "publications.html"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Publications"
+            name: "publications"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors", name: "authors", widget: "text" }
+              - { label: "Journal", name: "journal", widget: "string" }
+              - { label: "Year", name: "year", widget: "number" }
+              - { label: "PDF Link", name: "pdfLink", widget: "string" }
+              - { label: "DOI Link", name: "doiLink", widget: "string" }
+
+      - label: "Research Page"
+        name: "research"
+        file: "research.html"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Research Areas"
+            name: "research_areas"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }

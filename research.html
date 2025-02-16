@@ -1,0 +1,38 @@
+---
+layout: default
+title: Research
+permalink: /research/
+research_areas:
+  - title: "Artificial Intelligence & Machine Learning"
+    description: "Our AI research focuses on developing advanced neural network architectures, reinforcement learning, and NLP systems."
+  - title: "Robotics & Autonomous Systems"
+    description: "We develop innovative solutions for robotic perception, navigation, and manipulation."
+  - title: "Computer Vision & Sensing"
+    description: "Our vision research spans 3D scene understanding, object detection, and multi-modal sensor fusion."
+---
+
+<!-- Research Overview Section -->
+<div id="research-root"></div>
+
+<!-- React Component -->
+<script type="text/babel">
+    function ResearchSection() {
+        const researchAreas = {{ page.research_areas | jsonify }};
+        
+        return (
+            <section className="container mx-auto py-16 px-6">
+                <h2 className="text-3xl font-bold mb-6" data-aos="fade-right">Research Overview</h2>
+                <div className="space-y-8">
+                    {researchAreas.map((area, index) => (
+                        <div key={index} className="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+                            <h3 className="text-2xl font-semibold">{area.title}</h3>
+                            <p className="text-gray-700 mt-2">{area.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
+    ReactDOM.createRoot(document.getElementById("research-root")).render(<ResearchSection />);
+</script>

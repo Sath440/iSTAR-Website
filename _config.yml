@@ -5,7 +5,7 @@ description: >-
   Intelligent Systems and Technology for Automation Research Laboratory - 
   Advancing the frontiers of AI, robotics, and autonomous systems.
 baseurl: ""
-url: "https://istarlaboratory.netlify.app/"
+url: "https://istarlaboratory.netlify.app"
 
 # Build settings
 theme: null

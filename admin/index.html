@@ -2,17 +2,20 @@
 layout: none
 permalink: /admin/
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <!-- Use netlify-cms or decap-cms (both are effectively the same project) -->
+  <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
+  <!-- OR -->
+  <!-- <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script> -->
 </head>
 <body>
-    <script>
-        CMS.init();
-    </script>
+  <script>
+    CMS.init();
+  </script>
 </body>
 </html>

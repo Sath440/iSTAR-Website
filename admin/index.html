@@ -8,19 +8,11 @@ permalink: /admin/
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel</title>
-  <!-- 1) Load Netlify Identity Widget first -->
+  <!-- Load Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <!-- 2) Then load Netlify CMS -->
+  <!-- Load Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@latest/dist/netlify-cms.js"></script>
 </head>
 <body>
-  <!-- 3) Initialize CMS -->
-  <script>
-    if (typeof CMS !== 'undefined') {
-      CMS.init();
-    } else {
-      console.error("Netlify CMS failed to load or is not defined");
-    }
-  </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ permalink: /admin/
 ---
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel</title>
@@ -16,7 +16,11 @@ permalink: /admin/
 <body>
   <!-- 3) Initialize CMS -->
   <script>
-    CMS.init();
+    if (typeof CMS !== 'undefined') {
+      CMS.init();
+    } else {
+      console.error("Netlify CMS failed to load or is not defined");
+    }
   </script>
 </body>
 </html>
